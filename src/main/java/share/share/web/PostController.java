@@ -17,7 +17,6 @@ public class PostController {
     }
 
 
-
     @GetMapping("/postsByGenre/{id}")
     public List<Post> getPostsByGenre(@PathVariable String id) {
         Long genreId = Long.parseLong(id);

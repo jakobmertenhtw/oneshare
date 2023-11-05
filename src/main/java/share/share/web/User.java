@@ -13,17 +13,15 @@ public class User {
     private String firstName;
     private String lastName;
     private String mail;
-    private Date birthday;
     private Long phoneNumber;
 
 
-    public User(Long userID, String username, String firstName, String lastName, String mail, Date birthday, Long phoneNumber) {
+    public User(Long userID, String username, String firstName, String lastName, String mail, Long phoneNumber) {
         this.userID = userID;
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.mail = mail;
-        this.birthday = birthday;
         this.phoneNumber = phoneNumber;
     }
 
@@ -65,14 +63,6 @@ public class User {
 
     public void setMail(String mail) {
         this.mail = mail;
-    }
-
-    public Date getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
     }
 
     public Long getPhoneNumber() {

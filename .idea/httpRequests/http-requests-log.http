@@ -1,0 +1,62 @@
+POST http://localhost:8080/users
+Content-Type: application/json
+Content-Length: 143
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "userID":1,
+  "username": "testuser",
+  "firstName": "Test",
+  "lastName": "User",
+  "mail": "test@user.de",
+  "phoneNumber": "038102812"
+}
+
+<> 2023-11-05T131720.200.json
+
+###
+
+POST http://localhost:8080/post
+Content-Type: application/json
+Content-Length: 129
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "postID": 1,
+  "userID": 1,
+  "genreID": 1,
+  "titel": "Test",
+  "text": "test test",
+  "likes": 0,
+  "datum": "19-07-2024"
+}
+
+<> 2023-11-05T131317.400.json
+
+###
+
+POST http://localhost:8080/post
+Content-Type: application/json
+Content-Length: 129
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "postID": 1,
+  "userID": 1,
+  "genreID": 1,
+  "titel": "Test",
+  "text": "test test",
+  "likes": 0,
+  "datum": "19.07.2024"
+}
+
+<> 2023-11-05T131236.400.json
+
+###
+
