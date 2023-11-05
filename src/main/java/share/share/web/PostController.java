@@ -16,13 +16,15 @@ public class PostController {
         return service.getPost(postId);
     }
 
-    @GetMapping("/posts/{id}")
-    public List<Post> getPostsByGenre(@PathVariable String genreID) {
-        Long id = Long.parseLong(genreID);
-        return service.getPostsByGenre(id);
+
+
+    @GetMapping("/postsByGenre/{id}")
+    public List<Post> getPostsByGenre(@PathVariable String id) {
+        Long genreId = Long.parseLong(id);
+        return service.getPostsByGenre(genreId);
     }
 
-    @PostMapping("/posts")
+    @PostMapping("/post")
     public Post createPost(@RequestBody Post post) {
         return service.savePost(post);
     }

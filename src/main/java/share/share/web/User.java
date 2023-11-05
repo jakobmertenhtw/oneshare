@@ -1,12 +1,10 @@
 package share.share.web;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 
 import java.util.Date;
 @Entity
+@Table(name = "\"user\"")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +25,10 @@ public class User {
         this.mail = mail;
         this.birthday = birthday;
         this.phoneNumber = phoneNumber;
+    }
+
+    public User() {
+
     }
 
     public Long getUserID() {

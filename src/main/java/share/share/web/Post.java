@@ -28,6 +28,10 @@ public class Post {
         this.datum = datum;
     }
 
+    public Post() {
+
+    }
+
     public Long getPostID() {
         return postID;
     }

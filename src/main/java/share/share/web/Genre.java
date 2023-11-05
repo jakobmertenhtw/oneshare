@@ -17,6 +17,10 @@ public class Genre {
         Bez = bez;
     }
 
+    public Genre() {
+
+    }
+
     public Long getGenreID() {
         return genreID;
     }
