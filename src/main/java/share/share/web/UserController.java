@@ -8,6 +8,7 @@ public class UserController {
     @Autowired
     UserService service;
 
+    @CrossOrigin
     @GetMapping("/users/{id}")
     public User getUser(@PathVariable String id) {
         Long userId = Long.parseLong(id);
