@@ -18,10 +18,11 @@ public class PostService {
         List<Post> posts = new ArrayList<Post>();
         for (Post post : iterator) {
             if(post.getGenreID() == genreID) {
+                UserService userService = new UserService();
                 posts.add(post);
             }
         }
-            return posts;
+        return posts;
     }
 
     public Post savePost(Post post) {
