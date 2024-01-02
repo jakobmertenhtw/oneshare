@@ -9,24 +9,24 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userID;
-    private String username;
     private String firstName;
     private String lastName;
     private String mail;
     private Long phoneNumber;
     private String profilePicture;
     private String profileColor;
+    private String password;
 
 
     public User(Long userID, String username, String firstName, String lastName, String mail, Long phoneNumber, String profilePicture, String profileColor) {
         this.userID = userID;
-        this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.mail = mail;
         this.phoneNumber = phoneNumber;
         this.profileColor = profileColor;
         this.profilePicture = profilePicture;
+        this.password = password;
     }
 
     public User() {
@@ -35,14 +35,6 @@ public class User {
 
     public Long getUserID() {
         return userID;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getFirstName() {
@@ -87,6 +79,12 @@ public class User {
     }
     public void setProfileColor(String profileColor) {
         this.profileColor = profileColor;
+    }
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
 

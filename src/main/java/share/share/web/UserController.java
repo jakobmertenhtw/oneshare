@@ -13,6 +13,10 @@ public class UserController {
         Long userId = Long.parseLong(id);
         return service.getUser(userId);
     }
+    @GetMapping("/users/mail/{mail}")
+    public User getUserByMail(@PathVariable String mail) {
+        return service.getUserByMail(mail);
+    }
 
     @PostMapping("/users")
     public User createUser(@RequestBody User user) {
