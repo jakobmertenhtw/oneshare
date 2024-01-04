@@ -20,10 +20,17 @@ public class PostController {
     public List<Post> getPostsByGenre(@PathVariable String id) {
         Long genreId = Long.parseLong(id);
         return service.getPostsByGenre(genreId);
+
     }
 
     @PostMapping("/post")
     public Post createPost(@RequestBody Post post) {
         return service.savePost(post);
+    }
+
+    @PutMapping("/likePost/{id}")
+    public Post likePost(@PathVariable String id) {
+        Long postId = Long.parseLong(id);
+        return service.likePost(postId);
     }
 }

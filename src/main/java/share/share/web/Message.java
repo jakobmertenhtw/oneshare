@@ -16,13 +16,17 @@ public class Message {
     private Long postID;
     private String text;
     private Date datum;
+    private String userFullName;
+    private String userColor;
 
-    public Message(Long messageID, Long userID, Long postID, String text, Date datum) {
+    public Message(Long messageID, Long userID, Long postID, String text, Date datum, String userFullName, String userColor) {
         this.messageID = messageID;
         this.userID = userID;
         this.postID = postID;
         this.text = text;
         this.datum = datum;
+        this.userFullName = "";
+        this.userColor = "";
     }
     public Message() {
 
@@ -55,6 +59,18 @@ public class Message {
     }
     public void setDatum(Date datum) {
         this.datum = datum;
+    }
+    public String getUserFullName() {
+        return userFullName;
+    }
+    public void setUserFullName(String userFullName) {
+        this.userFullName = userFullName;
+    }
+    public String getUserColor() {
+        return userColor;
+    }
+    public void setUserColor(String userColor) {
+        this.userColor = userColor;
     }
 
 

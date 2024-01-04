@@ -18,7 +18,6 @@ public class PostService {
         List<Post> posts = new ArrayList<Post>();
         for (Post post : iterator) {
             if(post.getGenreID() == genreID) {
-                UserService userService = new UserService();
                 posts.add(post);
             }
         }
@@ -28,4 +27,11 @@ public class PostService {
     public Post savePost(Post post) {
         return repo.save(post);
     }
+
+    public Post likePost(Long postID) {
+        Post post = repo.findById(postID).orElseThrow(() -> new RuntimeException());
+        post.setLikes(post.getLikes() + 1);
+        return repo.save(post);
+    }
+
 }
