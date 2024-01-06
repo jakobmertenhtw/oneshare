@@ -18,6 +18,12 @@ public class UserController {
         return service.getUserByMail(mail);
     }
 
+    @PutMapping("/users/{id}")
+    public User updateUser(@PathVariable String id, @RequestBody User user) {
+        Long userId = Long.parseLong(id);
+        return service.updateUser(userId, user);
+    }
+
     @PostMapping("/users")
     public User createUser(@RequestBody User user) {
         return service.saveUser(user);

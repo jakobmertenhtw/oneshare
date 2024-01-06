@@ -35,4 +35,16 @@ public class UserService {
         }
         return repo.save(user);
     }
+
+    public User updateUser(Long userID, User user) {
+        User user1 = repo.findById(userID).orElseThrow(() -> new RuntimeException());
+        user1.setMail(user.getMail());
+        user1.setPassword(user.getPassword());
+        user1.setFirstName(user.getFirstName());
+        user1.setLastName(user.getLastName());
+        user1.setPhoneNumber(user.getPhoneNumber());
+        user1.setProfilePicture(user.getProfilePicture());
+        return repo.save(user1);
+    }
+
 }
