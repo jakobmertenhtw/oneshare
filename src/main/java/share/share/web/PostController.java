@@ -20,8 +20,18 @@ public class PostController {
     public List<Post> getPostsByGenre(@PathVariable String id) {
         Long genreId = Long.parseLong(id);
         return service.getPostsByGenre(genreId);
-
     }
+    @GetMapping("/postsByUser/{id}")
+    public List<Post> getPostsByUser(@PathVariable String id) {
+        Long userId = Long.parseLong(id);
+        return service.getPostsByUser(userId);
+    }
+    @GetMapping("/numberOfPosts")
+    public List<Integer> getNumberOfPosts() {
+        return service.getNumberOfPosts();
+    }
+
+
 
     @PostMapping("/post")
     public Post createPost(@RequestBody Post post) {
@@ -32,5 +42,16 @@ public class PostController {
     public Post likePost(@PathVariable String id) {
         Long postId = Long.parseLong(id);
         return service.likePost(postId);
+    }
+    @PutMapping("editPost/{id}")
+    public Post editPost(@PathVariable String id, @RequestBody Post post) {
+        Long postId = Long.parseLong(id);
+        return service.editPost(postId, post);
+    }
+
+    @DeleteMapping("/deletePost/{id}")
+    public void deletePost(@PathVariable String id) {
+        Long postId = Long.parseLong(id);
+        service.deletePost(postId);
     }
 }

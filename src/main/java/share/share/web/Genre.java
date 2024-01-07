@@ -9,12 +9,17 @@ import jakarta.persistence.Id;
 public class Genre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long genreID;
-    private String Bez;
+    private Long id;
+    private String name;
+    private String imagepath;
+    private String imageAlt;
 
-    public Genre(Long genreID, String bez) {
-        this.genreID = genreID;
-        Bez = bez;
+
+    public Genre(Long id, String name, String imagepath, String imageAlt) {
+        this.id = id;
+        this.name = name;
+        this.imagepath = imagepath;
+        this.imageAlt = imageAlt;
     }
 
     public Genre() {
@@ -22,14 +27,15 @@ public class Genre {
     }
 
     public Long getGenreID() {
-        return genreID;
+        return id;
     }
-
-    public String getBez() {
-        return Bez;
+    public void setGenreID(Long genreID) {
+        this.id = genreID;
     }
-
-    public void setBez(String bez) {
-        Bez = bez;
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -3,6 +3,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 @Service
 public class PostService {
@@ -32,6 +33,46 @@ public class PostService {
         Post post = repo.findById(postID).orElseThrow(() -> new RuntimeException());
         post.setLikes(post.getLikes() + 1);
         return repo.save(post);
+    }
+
+    public List<Post> getPostsByUser(Long userID){
+        Iterable<Post> iterator = repo.findAll();
+        List<Post> posts = new ArrayList<Post>();
+        for (Post post : iterator) {
+            if(post.getUserID() == userID) {
+                posts.add(post);
+            }
+        }
+        return posts;
+    }
+
+    public List<Integer> getNumberOfPosts() {
+        Iterable<Post> iterator = repo.findAll();
+        List<Post> postsToday = new ArrayList<Post>();
+        List<Post> postsWeek =  new ArrayList<Post>();
+        for (Post post : iterator) {
+            // check if post is from this week
+            if (post.getDatum().getDay() >= 0 && post.getDatum().getDay() <= 6) {
+                postsWeek.add(post);
+            }
+            // check if post is from today
+            if (post.getDatum().getDay() == 0) {
+                postsToday.add(post);
+            }
+        }
+        return List.of(postsToday.size(), postsWeek.size());
+    }
+
+    public void deletePost(Long postID) {
+        repo.deleteById(postID);
+    }
+
+    public Post editPost(Long postID, Post post) {
+        Post postToEdit = repo.findById(postID).orElseThrow(() -> new RuntimeException());
+        postToEdit.setTitel(post.getTitel());
+        postToEdit.setText(post.getText());
+        postToEdit.setDatum(Date.from(java.time.ZonedDateTime.now().toInstant()));
+        return repo.save(postToEdit);
     }
 
 }
