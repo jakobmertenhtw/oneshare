@@ -26,16 +26,28 @@ public class Genre {
 
     }
 
-    public Long getGenreID() {
+    public Long getId() {
         return id;
     }
-    public void setGenreID(Long genreID) {
+    public void seId(Long genreID) {
         this.id = genreID;
+    }
+    public String getImagepath() {
+        return imagepath;
+    }
+    public void setImagepath(String imagepath) {
+        this.imagepath = imagepath;
     }
     public String getName() {
         return name;
     }
+    public String getImageAlt() {
+        return imageAlt;
+    }
     public void setName(String name) {
         this.name = name;
+    }
+    public void setImageAlt(String imageAlt) {
+        this.imageAlt = imageAlt;
     }
 }
