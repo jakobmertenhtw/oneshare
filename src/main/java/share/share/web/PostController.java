@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class PostController {
@@ -29,6 +30,10 @@ public class PostController {
     @GetMapping("/numberOfPosts")
     public List<Integer> getNumberOfPosts() {
         return service.getNumberOfPosts();
+    }
+    @GetMapping("/postsFromToday")
+    public List<Post> getPostsFromToday() {
+        return service.getPostsFromToday();
     }
 
 

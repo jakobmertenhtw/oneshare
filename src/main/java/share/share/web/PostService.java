@@ -2,9 +2,9 @@ package share.share.web;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+
+import java.util.*;
+
 @Service
 public class PostService {
     @Autowired
@@ -73,6 +73,18 @@ public class PostService {
         postToEdit.setText(post.getText());
         postToEdit.setDatum(Date.from(java.time.ZonedDateTime.now().toInstant()));
         return repo.save(postToEdit);
+    }
+
+    public List<Post> getPostsFromToday() {
+        Iterable<Post> iterator = repo.findAll();
+        List<Post> postsToday = new ArrayList<Post>();
+        for (Post post : iterator) {
+            // check if post is from today
+            if (post.getDatum().getDay() == 0) {
+                postsToday.add(post);
+            }
+        }
+        return postsToday;
     }
 
 }
