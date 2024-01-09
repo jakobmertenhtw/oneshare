@@ -47,4 +47,12 @@ public class UserService {
         return repo.save(user1);
     }
 
+    public Iterable<User> getUsersFromPosts(List<Post> postList) {
+        List<User> userList = new ArrayList<User>();
+        for (Post post : postList) {
+            userList.add(repo.findById(post.getUserID()).orElseThrow(() -> new RuntimeException()));
+        }
+        return userList;
+    }
+
 }
