@@ -54,6 +54,9 @@ public class PostService {
                 posts.add(post);
             }
         }
+
+        posts.sort(Comparator.comparing(Post::getDatum).reversed());
+
         return posts;
     }
 
@@ -95,6 +98,9 @@ public class PostService {
                 postsToday.add(post);
             }
         }
+
+        postsToday.sort(Comparator.comparing(Post::getDatum).reversed());
+
         return postsToday;
     }
 
