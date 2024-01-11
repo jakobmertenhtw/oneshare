@@ -3,7 +3,9 @@ package share.share.web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -21,10 +23,19 @@ public class MessageService {
             }
         }
 
+        messages.sort(Comparator.comparing(Message::getDatum).reversed());
+
+
         return messages;
     }
 
     public Message saveMessage(Message message) {
+
+        if (message.getDatum() == null) {
+            message.setDatum(Date.from(java.time.ZonedDateTime.now().toInstant()));
+        }
+
+
         return repo.save(message);
     }
 
