@@ -1,9 +1,11 @@
 package share.share.web;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.sql.Date;
 
 @Service
 public class PostService {
@@ -22,10 +24,19 @@ public class PostService {
                 posts.add(post);
             }
         }
+
+        // sortiere die Liste nach Datum
+        posts.sort(Comparator.comparing(Post::getDatum).reversed());
+
         return posts;
     }
 
     public Post savePost(Post post) {
+
+        if (post.getDatum() == null) {
+            post.setDatum(Date.from(java.time.ZonedDateTime.now().toInstant()));
+        }
+
         return repo.save(post);
     }
 
@@ -43,6 +54,9 @@ public class PostService {
                 posts.add(post);
             }
         }
+
+        posts.sort(Comparator.comparing(Post::getDatum).reversed());
+
         return posts;
     }
 
@@ -84,6 +98,9 @@ public class PostService {
                 postsToday.add(post);
             }
         }
+
+        postsToday.sort(Comparator.comparing(Post::getDatum).reversed());
+
         return postsToday;
     }
 
