@@ -16,7 +16,7 @@ public class User {
     private String profilePicture;
     private String profileColor;
     private String password;
-
+    private static final String UNICODE_FORMAT = "UTF-8";
 
     public User(Long userID, String username, String firstName, String lastName, String mail, Long phoneNumber, String profilePicture, String profileColor) {
         this.userID = userID;
@@ -87,4 +87,3 @@ public class User {
         this.password = password;
     }
 }
-

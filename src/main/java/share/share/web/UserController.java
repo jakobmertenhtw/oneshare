@@ -15,9 +15,9 @@ public class UserController {
         Long userId = Long.parseLong(id);
         return service.getUser(userId);
     }
-    @GetMapping("/users/mail/{mail}")
-    public User getUserByMail(@PathVariable String mail) {
-        return service.getUserByMail(mail);
+    @GetMapping("/users/mail/{mail}/{password}")
+    public User getUserByMail(@PathVariable String mail, @PathVariable String password) {
+        return service.getUserByMail(mail, password);
     }
 
     @PostMapping("/usersFromPosts")
