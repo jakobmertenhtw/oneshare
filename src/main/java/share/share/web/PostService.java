@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.ZoneId;
 
 @Service
 public class PostService {
@@ -64,13 +66,18 @@ public class PostService {
         Iterable<Post> iterator = repo.findAll();
         List<Post> postsToday = new ArrayList<Post>();
         List<Post> postsWeek =  new ArrayList<Post>();
+        LocalDate today = LocalDate.now();
+        LocalDate weekAgo = today.minusDays(7);
+
         for (Post post : iterator) {
+            LocalDate postDate = post.getDatum().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
             // check if post is from this week
-            if (post.getDatum().getDay() >= 0 && post.getDatum().getDay() <= 6) {
+            if ((postDate.isAfter(weekAgo) || postDate.isEqual(weekAgo)) && (postDate.isBefore(today) || postDate.isEqual(today))) {
                 postsWeek.add(post);
             }
             // check if post is from today
-            if (post.getDatum().getDay() == 0) {
+            if (postDate.isEqual(today)) {
                 postsToday.add(post);
             }
         }
@@ -92,9 +99,13 @@ public class PostService {
     public List<Post> getPostsFromToday() {
         Iterable<Post> iterator = repo.findAll();
         List<Post> postsToday = new ArrayList<Post>();
+        LocalDate today = LocalDate.now();
         for (Post post : iterator) {
+
+            LocalDate postDate = post.getDatum().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
             // check if post is from today
-            if (post.getDatum().getDay() == 0) {
+            if (postDate.isEqual(today)) {
                 postsToday.add(post);
             }
         }
