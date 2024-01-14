@@ -11,6 +11,11 @@ java {
 	sourceCompatibility = '17'
 }
 
+test {
+	maxParallelForks = 1
+}
+
+
 repositories {
 	mavenCentral()
 }
