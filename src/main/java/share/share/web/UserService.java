@@ -4,6 +4,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -17,12 +18,15 @@ public class UserService {
     public User getUserByMail(String mail, String password) {
         BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
         Iterable<User> iterator = repo.findAll();
+        //System.out.println(repo.findAll());
         for (User user : iterator) {
             if (user.getMail().equals(mail) && bcrypt.matches(password, user.getPassword())) {
                 return user;
+            } else if (user.getMail().equals(mail) && !bcrypt.matches(password, user.getPassword())) {
+                throw new RuntimeException("Password incorrect!");
             }
         }
-        throw new RuntimeException("User not found or password incorrect");
+        throw new RuntimeException("User not found or password incorrect!");
     }
 
 
