@@ -1,6 +1,7 @@
 package share.share.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -48,7 +49,7 @@ public class PostController {
         Long postId = Long.parseLong(id);
         return service.likePost(postId);
     }
-    @PutMapping("editPost/{id}")
+    @PutMapping(path = "/editPost/{id}")
     public Post editPost(@PathVariable String id, @RequestBody Post post) {
         Long postId = Long.parseLong(id);
         return service.editPost(postId, post);

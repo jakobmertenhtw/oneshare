@@ -31,6 +31,7 @@ public class UserService {
 
 
     public User saveUser(User user) {
+
         BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
         String encryptedPassword = bcrypt.encode(user.getPassword());
         user.setPassword(encryptedPassword);

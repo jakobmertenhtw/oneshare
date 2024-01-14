@@ -28,18 +28,19 @@ public class UserServiceTest {
     @MockBean
     private UserRepository repo;
 
-    @Test
-    @DisplayName("should find a user by id")
-    void testGetUser() {
+@Test
+@DisplayName("should find a user by id")
+void testGetUser() {
 
-        User testUser = new User(1L, "Test",  "User", "test@user.com", 1234567890L, "TU", "00000");
-        doReturn(Optional.of(testUser)).when(repo).findById(1L);
+    User testUser = new User(1L, "Test",  "User", "test@user.com", 1234567890L, "TU", "00000");
+    doReturn(Optional.of(testUser)).when(repo).findById(1L);
 
-        User actual = service.getUser(1L);
+    User actual = service.getUser(1L);
 
-        assertEquals(testUser.getMail(), actual.getMail());
+    assertEquals(testUser.getMail(), actual.getMail());
+}
 
-    }
+
 
     @Test
     @DisplayName("should find user by mail and authenticate")

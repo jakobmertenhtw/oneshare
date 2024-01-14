@@ -89,6 +89,7 @@ public class PostService {
     }
 
     public Post editPost(Long postID, Post post) {
+
         Post postToEdit = repo.findById(postID).orElseThrow(() -> new RuntimeException());
         postToEdit.setTitel(post.getTitel());
         postToEdit.setText(post.getText());
