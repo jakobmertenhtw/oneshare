@@ -34,7 +34,6 @@ public class UserServiceTest {
         User actual = service.getUser(1L);
 
         assertEquals(testUser.getMail(), actual.getMail());
-
     }
 
 }
