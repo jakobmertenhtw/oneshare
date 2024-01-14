@@ -18,7 +18,7 @@ public class User {
     private String password;
     private static final String UNICODE_FORMAT = "UTF-8";
 
-    public User(Long userID, String username, String firstName, String lastName, String mail, Long phoneNumber, String profilePicture, String profileColor) {
+    public User(Long userID, String firstName, String lastName, String mail, Long phoneNumber, String profilePicture, String profileColor) {
         this.userID = userID;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -26,7 +26,7 @@ public class User {
         this.phoneNumber = phoneNumber;
         this.profileColor = profileColor;
         this.profilePicture = profilePicture;
-        this.password = password;
+        //this.password = password;
     }
 
     public User() {
